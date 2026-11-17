@@ -1,0 +1,26 @@
+name: Open test release PR (fork only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      head:
+        description: Version branch to open a test release PR from
+        required: true
+        type: string
+
+permissions: {}
+
+jobs:
+  open:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Open PR as github-actions[bot]
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD: ${{ inputs.head }}
+        run: |
+          gh pr create -R "$GITHUB_REPOSITORY" --base master --head "$HEAD" \
+            --title "test: release $HEAD" \
+            --body "Fork-only test of the hardened release workflow."
