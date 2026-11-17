@@ -10,7 +10,7 @@ apiVersion: v2
 type: application
 
 name: redis-enterprise-operator
-description: A Helm chart for Redis Enterprise Operator for Kubernetes
+description: A Helm chart for Redis Enterprise Operator for Kubernetes (fork test)
 
 version: 0.0.1-1
 appVersion: 0.0.1-1
